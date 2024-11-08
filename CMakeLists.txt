@@ -14,6 +14,8 @@ find_package(catkin REQUIRED COMPONENTS
     message_generation
 )
 
+catkin_python_setup()
+
 add_subdirectory(extern/serial)
 include_directories(extern/serial/include)
 
@@ -206,3 +208,8 @@ endif()
 if(TARGET ${PROJECT_NAME}_test)
     target_link_libraries(${PROJECT_NAME}_test ${nutils})
 endif()
+
+catkin_install_python(PROGRAMS
+  scripts/tofsensem_viz.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
